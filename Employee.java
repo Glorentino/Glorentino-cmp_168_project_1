@@ -1,5 +1,70 @@
 package src.PROJECT_1;
 
 public class Employee extends Person {
-    
+    private String deptName;
+    private static int numEmployees;
+    private int employeeID;
+
+    public Employee() {
+        this.super();
+        this.deptName = "";
+        numEmployees++;
+        this.employeeID = numEmployees;
+    }
+    public Employee(String deptName) {
+        this.super();
+        this.deptName = deptName;
+        numEmployees++;
+        this.employeeID = numEmployees;
+    }
+    public Employee(String name, int birthYear, String deptName) {
+        this.super(name, birthYear);
+        this.deptName = deptName;
+        numEmployees++;
+        this.employeeID = numEmployees;
+    }
+
+    public String getDeptName() {
+        return deptName; 
+    }
+
+    public static getNumEmployees() {
+        return numEmployees;
+    }
+
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setDeptName(String inputDeptName) {
+        deptName = inputDeptName;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Employee otherEmployee = (Employee) obj;
+
+        return super.equals(obj) && 
+                this.deptName.equals(otherEmployee.deptName) &&
+                this.employeeID == otherEmployee.employeeID;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "Person: Employee: Department: %20s | Employee Number: %3d", deptName, employeeID
+        ); // Not finished
+    }
+
+    @Override
+    public int compareTo(Person p) {
+        return Integer.compare(this.employeeID, p.employeeID);
+    }
 }

@@ -68,7 +68,7 @@ public class Course implements Comparable<Course> {
         String level = isGraduateCourse ? "G" : "U";
         return String.format(
             "Course: %3s-%3d | Number of Credits: %02d | %s",
-                courseDept, courseNum, numCredits, isGraduateCourse, level);
+                courseDept, courseNum, numCredits, level);
     }
 
     @Override

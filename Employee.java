@@ -6,19 +6,19 @@ public class Employee extends Person {
     private int employeeID;
 
     public Employee() {
-        this.super();
+        super();
         this.deptName = "";
         numEmployees++;
         this.employeeID = numEmployees;
     }
     public Employee(String deptName) {
-        this.super();
+        super();
         this.deptName = deptName;
         numEmployees++;
         this.employeeID = numEmployees;
     }
     public Employee(String name, int birthYear, String deptName) {
-        this.super(name, birthYear);
+        super(name, birthYear);
         this.deptName = deptName;
         numEmployees++;
         this.employeeID = numEmployees;
@@ -57,10 +57,18 @@ public class Employee extends Person {
     }
 
     @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + deptName.hashCode();
+        result = 31 * result + Integer.hashCode(employeeID);
+        return result;
+    }
+
+    @Override
     public String toString() {
-        return String.format(
-            "Person: Employee: Department: %20s | Employee Number: %3d", deptName, employeeID
-        ); // Not finished
+        return super.toString() + String.format(
+            "Employee: Department: %20s | Employee Number: %3d", deptName, employeeID
+        ); 
     }
 
     @Override

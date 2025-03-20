@@ -1,5 +1,7 @@
 package src.PROJECT_1;
 
+import java.util.Objects;
+
 public class Course implements Comparable<Course> {
     private boolean isGraduateCourse;
     private int courseNum;
@@ -47,11 +49,9 @@ public class Course implements Comparable<Course> {
         Course otherCourse = (Course) obj;
 
         return this.isGraduateCourse == otherCourse.isGraduateCourse &&
-                this.courseNum == otherCourse.courseNum &&
-                this.numCredits == otherCourse.numCredits &&
-                ((this.courseDept == null && otherCourse.courseDept == null) || 
-                (this.courseDept != null && 
-                this.courseDept.equals(otherCourse.courseDept)));
+               this.courseNum == otherCourse.courseNum &&
+               this.numCredits == otherCourse.numCredits &&
+               Objects.equals(this.courseDept, otherCourse.courseDept);
     }
 
     @Override

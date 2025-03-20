@@ -1,5 +1,7 @@
 package src.PROJECT_1;
 
+import java.util.Objects;
+
 public class Employee extends Person {
     private String deptName;
     private static int numEmployees;
@@ -51,9 +53,9 @@ public class Employee extends Person {
 
         Employee otherEmployee = (Employee) obj;
 
-        return super.equals(obj) && 
-                this.deptName.equals(otherEmployee.deptName) &&
-                this.employeeID == otherEmployee.employeeID;
+        return super.equals(otherEmployee) &&
+               Objects.equals(this.deptName, otherEmployee.deptName) &&
+               this.employeeID == otherEmployee.employeeID;
     }
 
     @Override
@@ -73,6 +75,11 @@ public class Employee extends Person {
 
     @Override
     public int compareTo(Person p) {
-        return Integer.compare(this.employeeID, p.employeeID);
+        if (p instanceof Employee) {
+            Employee otherEmployee = (Employee) p;
+            return Integer.compare(this.employeeID, otherEmployee.employeeID);
+        } else {
+            return super.compareTo(p);
+        }
     }
 }

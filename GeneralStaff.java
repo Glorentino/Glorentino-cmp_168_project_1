@@ -42,6 +42,11 @@ public class GeneralStaff extends Employee {
     }
 
     @Override
+    public int hashCode() {
+        return super.hashCode() + duty.hashCode();
+    }
+
+    @Override
     public String toString() {
         return super.toString() + String.format(" GeneralStaff: Duty: %10s", duty);
     }

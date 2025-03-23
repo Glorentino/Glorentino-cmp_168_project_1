@@ -1,6 +1,14 @@
 package src.PROJECT_1;
 
 import java.util.Objects;
+/*
+ * Course class represents a course in the school database.
+ * It contains information about the course such as whether it is a graduate course,
+ * the course number, department, and number of credits.
+ * It also implements Comparable interface to allow sorting based on course number.
+ * The class overrides equals, hashCode, and toString methods for proper comparison
+ * and representation of Course objects.
+ */
 
 public class Course implements Comparable<Course> {
     private boolean isGraduateCourse;
